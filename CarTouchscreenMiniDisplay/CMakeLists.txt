@@ -42,7 +42,7 @@ include_directories(./lib/lvgl)
 include_directories(./examples/inc)
 
 
-add_executable(CarTouchscreenMiniDisplay main.c)
+add_executable(CarTouchscreenMiniDisplay CarTouchscreenMiniDisplay.c)
 
 pico_set_program_name(CarTouchscreenMiniDisplay  "CarTouchscreenMiniDisplay")
 pico_set_program_version(CarTouchscreenMiniDisplay "0.1")
