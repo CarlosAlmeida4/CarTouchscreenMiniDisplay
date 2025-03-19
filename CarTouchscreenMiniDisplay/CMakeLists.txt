@@ -4,9 +4,24 @@ cmake_minimum_required(VERSION 3.13)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Initialise pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
+# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.1.1)
+set(toolchainVersion 14_2_Rel1)
+set(picotoolVersion 2.1.1)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+# ====================================================================================
 set(PICO_BOARD pico CACHE STRING "Board type")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
@@ -42,7 +57,7 @@ include_directories(./lib/lvgl)
 include_directories(./examples/inc)
 
 
-add_executable(CarTouchscreenMiniDisplay main.c)
+add_executable(CarTouchscreenMiniDisplay CarTouchscreenMiniDisplay.c)
 
 pico_set_program_name(CarTouchscreenMiniDisplay  "CarTouchscreenMiniDisplay")
 pico_set_program_version(CarTouchscreenMiniDisplay "0.1")
