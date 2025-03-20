@@ -31,7 +31,7 @@ if (PICO_SDK_VERSION_STRING VERSION_LESS "1.4.0")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.4.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
-project(RP2040-Touch-LCD-1.28 C CXX ASM)
+project(CarTouchscreenMiniDisplay C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
@@ -57,13 +57,13 @@ include_directories(./lib/lvgl)
 include_directories(./examples/inc)
 
 
-add_executable(RP2040-Touch-LCD-1.28 main.c)
+add_executable(CarTouchscreenMiniDisplay main.c)
 
-pico_set_program_name(RP2040-Touch-LCD-1.28  "RP2040-Touch-LCD-1.28")
-pico_set_program_version(RP2040-Touch-LCD-1.28 "0.1")
+pico_set_program_name(CarTouchscreenMiniDisplay  "CarTouchscreenMiniDisplay")
+pico_set_program_version(CarTouchscreenMiniDisplay "0.1")
 
-pico_enable_stdio_uart(RP2040-Touch-LCD-1.28 1)
-pico_enable_stdio_usb(RP2040-Touch-LCD-1.28  0)
+pico_enable_stdio_uart(CarTouchscreenMiniDisplay 1)
+pico_enable_stdio_usb(CarTouchscreenMiniDisplay  0)
 
 # Add the standard library to the build
 
@@ -73,7 +73,7 @@ set(LV_CONF_PATH
 add_compile_options(-O2)
 
 
-  target_link_libraries(RP2040-Touch-LCD-1.28  
+  target_link_libraries(CarTouchscreenMiniDisplay  
                         LCD 
                         Touch
                         QMI8658
@@ -86,10 +86,10 @@ add_compile_options(-O2)
                         hardware_dma
                         )
 # Add the standard include files to the build
-target_include_directories(RP2040-Touch-LCD-1.28   PRIVATE
+target_include_directories(CarTouchscreenMiniDisplay   PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   # ${CMAKE_CURRENT_LIST_DIR}
   )
 
-pico_add_extra_outputs(RP2040-Touch-LCD-1.28)
+pico_add_extra_outputs(CarTouchscreenMiniDisplay)
 
