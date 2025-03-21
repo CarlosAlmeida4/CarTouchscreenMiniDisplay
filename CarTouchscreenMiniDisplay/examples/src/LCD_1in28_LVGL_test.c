@@ -48,7 +48,7 @@ int LCD_1in28_LVGL_Test(void)
     QMI8658_init();
     // /*Init LVGL*/
     LVGL_Init();
-    Widgets_Init();
+    //Widgets_Init();
     
     while(1)
     {
