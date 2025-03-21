@@ -45,6 +45,7 @@ add_subdirectory(./lib/Touch)
 add_subdirectory(./lib/QMI8658)
 add_subdirectory(./lib/lvgl)
 add_subdirectory(./examples)
+add_subdirectory(./UI)
 
 
 #添加头文件目录
@@ -55,6 +56,8 @@ include_directories(./lib/Touch)
 include_directories(./lib/QMI8658)
 include_directories(./lib/lvgl)
 include_directories(./examples/inc)
+include_directories(./UI)
+
 
 
 add_executable(CarTouchscreenMiniDisplay main.c)
@@ -83,7 +86,7 @@ add_compile_options(-O2)
                         pico_stdlib
                         hardware_spi
                         hardware_i2c
-                        hardware_dma
+                        hardware_dm
                         )
 # Add the standard include files to the build
 target_include_directories(CarTouchscreenMiniDisplay   PRIVATE
