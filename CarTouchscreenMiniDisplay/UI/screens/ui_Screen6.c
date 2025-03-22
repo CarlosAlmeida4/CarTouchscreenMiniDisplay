@@ -27,7 +27,7 @@ void ui_Screen6_screen_init(void)
     lv_obj_set_align(ui_Spinbox1, LV_ALIGN_CENTER);
     lv_spinbox_set_digit_format(ui_Spinbox1, 4, 2);
     lv_spinbox_set_range(ui_Spinbox1, 0, 9999);
-    lv_spinbox_set_cursor_pos(ui_Spinbox1, 1 - 1);
+    //lv_spinbox_set_cursor_pos(ui_Spinbox1, 1 - 1);
 
     ui_Switch1 = lv_switch_create(ui_Screen6);
     lv_obj_set_width(ui_Switch1, 50);
