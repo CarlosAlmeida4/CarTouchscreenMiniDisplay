@@ -71,7 +71,7 @@ pico_enable_stdio_usb(CarTouchscreenMiniDisplay  0)
 # Add the standard library to the build
 
 set(LV_CONF_PATH
-  ${CMAKE_CURRENT_SOURCE_DIR}lv_conf.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lv_conf.h
     CACHE STRING "" FORCE)
 add_compile_options(-O2)
 
