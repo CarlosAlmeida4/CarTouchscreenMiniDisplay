@@ -44,18 +44,18 @@ add_subdirectory(./lib/LCD)
 add_subdirectory(./lib/Touch)
 add_subdirectory(./lib/QMI8658)
 add_subdirectory(./lib/lvgl)
-add_subdirectory(./examples)
+#add_subdirectory(./examples)
 add_subdirectory(./ui)
 
 
 #添加头文件目录
-include_directories(./examples)
+#include_directories(./examples)
 include_directories(./lib/Config)
 include_directories(./lib/LCD)
 include_directories(./lib/Touch)
 include_directories(./lib/QMI8658)
 include_directories(./lib/lvgl)
-include_directories(./examples/inc)
+#include_directories(./examples/inc)
 include_directories(./ui)
 
 
@@ -82,7 +82,7 @@ add_compile_options(-O2)
                         QMI8658
                         LVGL
                         Config
-                        examples
+                        #examples
                         pico_stdlib
                         hardware_spi
                         hardware_i2c
