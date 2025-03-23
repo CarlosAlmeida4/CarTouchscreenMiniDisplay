@@ -5,13 +5,13 @@
  ******************************************************************************/
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
-#include "lvgl.h"
+    #include "lvgl.h"
 #else
-#include "../../lvgl.h"
+    #include "../../lvgl.h"
 #endif
 
 #ifndef LV_FONT_SIMSUN_16_CJK
-#define LV_FONT_SIMSUN_16_CJK 1
+    #define LV_FONT_SIMSUN_16_CJK 1
 #endif
 
 #if LV_FONT_SIMSUN_16_CJK
@@ -22100,7 +22100,6 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     0x2f, 0xdd, 0xdd, 0x80, 0x0, 0x0, 0x0, 0x0
 };
 
-
 /*---------------------
  *  GLYPH DESCRIPTION
  *--------------------*/
@@ -23696,8 +23695,7 @@ static const uint16_t unicode_list_5[] = {
 };
 
 /*Collect the unicode lists and glyph_id offsets*/
-static const lv_font_fmt_txt_cmap_t cmaps[] =
-{
+static const lv_font_fmt_txt_cmap_t cmaps[] = {
     {
         .range_start = 32, .range_length = 96, .glyph_id_start = 1,
         .unicode_list = NULL, .glyph_id_ofs_list = NULL, .list_length = 0, .type = LV_FONT_FMT_TXT_CMAP_FORMAT0_TINY
@@ -23724,15 +23722,13 @@ static const lv_font_fmt_txt_cmap_t cmaps[] =
     }
 };
 
-
-
 /*--------------------
  *  ALL CUSTOM DATA
  *--------------------*/
 
-#if LV_VERSION_CHECK(8, 0, 0)
+#if LVGL_VERSION_MAJOR >= 8
 /*Store all the custom data of the font*/
-static  lv_font_fmt_txt_glyph_cache_t cache;
+
 static const lv_font_fmt_txt_dsc_t font_dsc = {
 #else
 static lv_font_fmt_txt_dsc_t font_dsc = {
@@ -23746,18 +23742,15 @@ static lv_font_fmt_txt_dsc_t font_dsc = {
     .bpp = 4,
     .kern_classes = 0,
     .bitmap_format = 0,
-#if LV_VERSION_CHECK(8, 0, 0)
-    .cache = &cache
-#endif
-};
 
+};
 
 /*-----------------
  *  PUBLIC FONT
  *----------------*/
 
 /*Initialize a public general font descriptor*/
-#if LV_VERSION_CHECK(8, 0, 0)
+#if LVGL_VERSION_MAJOR >= 8
 const lv_font_t lv_font_simsun_16_cjk = {
 #else
 lv_font_t lv_font_simsun_16_cjk = {
@@ -23769,14 +23762,11 @@ lv_font_t lv_font_simsun_16_cjk = {
 #if !(LVGL_VERSION_MAJOR == 6 && LVGL_VERSION_MINOR == 0)
     .subpx = LV_FONT_SUBPX_NONE,
 #endif
-#if LV_VERSION_CHECK(7, 4, 0)
+#if LV_VERSION_CHECK(7, 4, 0) || LVGL_VERSION_MAJOR >= 8
     .underline_position = -2,
     .underline_thickness = 1,
 #endif
     .dsc = &font_dsc           /*The custom font data. Will be accessed by `get_glyph_bitmap/dsc` */
 };
 
-
-
 #endif /*#if LV_FONT_SIMSUN_16_CJK*/
-

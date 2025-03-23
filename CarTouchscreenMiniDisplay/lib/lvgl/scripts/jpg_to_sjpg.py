@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 ##################################################################
 # sjpeg converter script version 1.0
 # Dependencies: (PYTHON-3)
 ##################################################################
 SJPG_FILE_FORMAT_VERSION = "V1.00"  #
-JPEG_SPLIT_HEIGHT   = 16 
+JPEG_SPLIT_HEIGHT   = 16
 ##################################################################
 import math, os, sys, time
 from PIL import Image
@@ -113,7 +115,7 @@ for i in range(len(sjpeg)):
         new_line_threshold = 0
 
 
-c_code = c_code + "\n};\n\nlv_img_dsc_t "
+c_code = c_code + "\n};\n\nlv_image_dsc_t "
 c_code = c_code + OUTPUT_FILE_NAME + " = {\n"
 c_code = c_code + "\t.header.always_zero = 0,\n"
 c_code = c_code + "\t.header.w = " + str(width) + ",\n"
