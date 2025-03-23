@@ -86,7 +86,8 @@ add_compile_options(-O2)
                         pico_stdlib
                         hardware_spi
                         hardware_i2c
-                        hardware_dm
+                        hardware_dma
+                        ui
                         )
 # Add the standard include files to the build
 target_include_directories(CarTouchscreenMiniDisplay   PRIVATE
