@@ -19,10 +19,11 @@ void LVGL_Init(void);
 void Widgets_Init(void);
 
 // LVGL
-static lv_disp_draw_buf_t disp_buf;
+static lv_display_t *disp;
+//static lv_disp_draw_buf_t disp_buf; //FIXME: Check for deletion
 static lv_color_t buf0[DISP_HOR_RES * DISP_VER_RES/2];
 static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES/2];
-static lv_disp_drv_t disp_drv;
+//static lv_disp_drv_t disp_drv;
 
 static lv_indev_drv_t indev_ts;
 static lv_indev_drv_t indev_en;
@@ -68,13 +69,11 @@ void LVGL_Init(void)
     lv_init();
 
     // /*3.Init LVGL display*/
-    lv_disp_draw_buf_init(&disp_buf, buf0, buf1, DISP_HOR_RES * DISP_VER_RES / 2); 
-    lv_disp_drv_init(&disp_drv);    
-    disp_drv.flush_cb = disp_flush_cb;
-    disp_drv.draw_buf = &disp_buf;        
-    disp_drv.hor_res = DISP_HOR_RES;
-    disp_drv.ver_res = DISP_VER_RES;
-    lv_disp_t *disp= lv_disp_drv_register(&disp_drv);   
+    //lv_disp_draw_buf_init(&disp_buf, buf0, buf1, DISP_HOR_RES * DISP_VER_RES / 2); //FIXME: Check for deletion
+    disp = lv_display_create((int32_t)DISP_HOR_RES,(int32_t)DISP_VER_RES);
+    lv_display_set_flush_cb(disp,disp_flush_cb);
+    lv_display_set_buffers(disp,buf0,buf1,DISP_HOR_RES * DISP_VER_RES / 2);
+
 
 #if INPUTDEV_TS
     // /*4.Init touch screen as input device*/ 
