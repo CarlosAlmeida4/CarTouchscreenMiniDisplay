@@ -25,8 +25,8 @@ static lv_color_t buf0[DISP_HOR_RES * DISP_VER_RES/2];
 static lv_color_t buf1[DISP_HOR_RES * DISP_VER_RES/2];
 //static lv_disp_drv_t disp_drv;
 
-static lv_indev_drv_t indev_ts;
-static lv_indev_drv_t indev_en;
+//static lv_indev_drv_t indev_ts;//FIXME: Check for deletion
+//static lv_indev_drv_t indev_en;//FIXME: Check for deletion
 static lv_group_t *group;
 
 static lv_obj_t *label_imu;
@@ -77,19 +77,23 @@ void LVGL_Init(void)
 
 #if INPUTDEV_TS
     // /*4.Init touch screen as input device*/ 
-    lv_indev_drv_init(&indev_ts); 
-    indev_ts.type = LV_INDEV_TYPE_POINTER;    
-    indev_ts.read_cb = ts_read_cb;            
-    lv_indev_t * ts_indev = lv_indev_drv_register(&indev_ts);
+    //lv_indev_drv_init(&indev_ts); //FIXME: Check for deletion
+    //indev_ts.type = LV_INDEV_TYPE_POINTER;//FIXME: Check for deletion    
+    //indev_ts.read_cb = ts_read_cb;//FIXME: Check for deletion            
+    lv_indev_t *ts_indev = lv_indev_create();
+    lv_indev_set_type(ts_indev, LV_INDEV_TYPE_POINTER);
+    lv_indev_set_read_cb(ts_indev, ts_read_cb);
     //Enable touch IRQ
     DEV_IRQ_SET(Touch_INT_PIN, GPIO_IRQ_EDGE_RISE, &touch_callback);
 #endif
 
     // /*5.Init imu as input device*/
-    lv_indev_drv_init(&indev_en);   
-    indev_en.type = LV_INDEV_TYPE_ENCODER;  
-    indev_en.read_cb = encoder_read_cb;         
-    lv_indev_t * encoder_indev = lv_indev_drv_register(&indev_en);
+    //lv_indev_drv_init(&indev_en); //FIXME: Check for deletion  
+    //indev_en.type = LV_INDEV_TYPE_ENCODER;  //FIXME: Check for deletion
+    //indev_en.read_cb = encoder_read_cb; //FIXME: Check for deletion        
+    lv_indev_t * encoder_indev = lv_indev_create();
+    lv_indev_set_type(encoder_indev, LV_INDEV_TYPE_ENCODER);
+    lv_indev_set_read_cb(encoder_indev, encoder_read_cb);
     group = lv_group_create();
     lv_indev_set_group(encoder_indev, group);
 
