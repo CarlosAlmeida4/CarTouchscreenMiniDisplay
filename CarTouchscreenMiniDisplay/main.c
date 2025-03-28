@@ -44,11 +44,11 @@ static struct repeating_timer lvgl_timer;
 static struct repeating_timer imu_data_update_timer;
 static struct repeating_timer imu_diff_timer;
 
-static void disp_flush_cb(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * color_p);
+static void disp_flush_cb(lv_display_t * disp, const lv_area_t * area, uint8_t * color_p);
 static void touch_callback(uint gpio, uint32_t events);
-static void ts_read_cb(lv_indev_drv_t * drv, lv_indev_data_t*data);
+static void ts_read_cb(lv_indev_t * drv, lv_indev_data_t*data);
 static void get_diff_data(void);
-static void encoder_read_cb(lv_indev_drv_t * drv, lv_indev_data_t*data);
+static void encoder_read_cb(lv_indev_t * drv, lv_indev_data_t*data);
 static void dma_handler(void);
 static bool repeating_lvgl_timer_callback(struct repeating_timer *t); 
 static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t); 
@@ -72,7 +72,7 @@ void LVGL_Init(void)
     //lv_disp_draw_buf_init(&disp_buf, buf0, buf1, DISP_HOR_RES * DISP_VER_RES / 2); //FIXME: Check for deletion
     disp = lv_display_create((int32_t)DISP_HOR_RES,(int32_t)DISP_VER_RES);
     lv_display_set_flush_cb(disp,disp_flush_cb);
-    lv_display_set_buffers(disp,buf0,buf1,DISP_HOR_RES * DISP_VER_RES / 2);
+    lv_display_set_buffers(disp,buf0,buf1,sizeof(buf0),LV_DISPLAY_RENDER_MODE_DIRECT);
 
 
 #if INPUTDEV_TS
@@ -108,7 +108,7 @@ void LVGL_Init(void)
 function:	Refresh image by transferring the color data to the SPI bus by DMA
 parameter:
 ********************************************************************************/
-static void disp_flush_cb(lv_disp_drv_t * disp, const lv_area_t * area, lv_color_t * color_p)
+static void disp_flush_cb(lv_display_t * disp, const lv_area_t * area, uint8_t * color_p)
 {
 
     LCD_1IN28_SetWindows(area->x1, area->y1, area->x2 , area->y2);
@@ -140,7 +140,7 @@ static void touch_callback(uint gpio, uint32_t events)
 function:   Update touch screen input device status
 parameter:
 ********************************************************************************/
-static void ts_read_cb(lv_indev_drv_t * drv, lv_indev_data_t*data)
+static void ts_read_cb(lv_indev_t * drv, lv_indev_data_t*data)
 {
     data->point.x = ts_x;
     data->point.y = ts_y; 
@@ -202,7 +202,7 @@ static void get_diff_data(void)
 function:	Update encoder input device status
 parameter:
 ********************************************************************************/
-static void encoder_read_cb(lv_indev_drv_t * drv, lv_indev_data_t*data)
+static void encoder_read_cb(lv_indev_t * drv, lv_indev_data_t*data)
 {
     data->enc_diff = encoder_diff;
     data->state    = encoder_act; 
@@ -217,7 +217,7 @@ static void dma_handler(void)
 {
     if (dma_channel_get_irq0_status(dma_tx)) {
         dma_channel_acknowledge_irq0(dma_tx);
-        lv_disp_flush_ready(&disp_drv);         /* Indicate you are ready with the flushing*/
+        lv_disp_flush_ready(disp);         /* Indicate you are ready with the flushing*/
     }
 }
 
