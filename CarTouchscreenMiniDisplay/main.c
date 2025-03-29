@@ -270,7 +270,7 @@ int main(void)
     // /*Init touch screen*/ 
     CST816S_init(CST816S_Point_Mode);
     // /*Init IMU*/
-    QMI8658_init();
+    //QMI8658_init();
     // /*Init LVGL*/
     LVGL_Init();
     ui_init();
@@ -278,11 +278,10 @@ int main(void)
     while(1)
     {
       lv_task_handler();
-      DEV_Delay_ms(5); 
+      //DEV_Delay_ms(5); 
     }
 
     DEV_Module_Exit();
-    return 0;
 
     return 0;
 }
