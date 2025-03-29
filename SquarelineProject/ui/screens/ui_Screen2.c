@@ -3,15 +3,13 @@
 // LVGL version: 8.3.6
 // Project name: CarTouchScreenMiniDisplay
 
-#ifndef _UI_EVENTS_H
-#define _UI_EVENTS_H
+#include "../ui.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+void ui_Screen2_screen_init(void)
+{
+    ui_Screen2 = lv_obj_create(NULL);
+    lv_obj_clear_flag(ui_Screen2, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-#ifdef __cplusplus
-} /*extern "C"*/
-#endif
 
-#endif
+
+}
