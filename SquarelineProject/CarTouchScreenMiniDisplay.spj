@@ -382,7 +382,7 @@
     "multilang": "DISABLE",
     "description": "",
     "board": "Raspberry Pico - CMake/VSCode/Eclipse cross-develop",
-    "board_version": "v2.0.0",
+    "board_version": "v1.0.0",
     "editor_version": "1.5.1",
     "image": "",
     "export_temp_image": false,
@@ -400,7 +400,7 @@
     "backup_cnt": 3,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
-    "lvgl_version": "9.1.0",
+    "lvgl_version": "8.3.6",
     "callfuncsexport": "C_FILE",
     "imageexport": "SOURCE",
     "lvgl_include_path": "lvgl.h",
@@ -414,7 +414,7 @@
     "drive_fatfs_path": "",
     "naming": "Name",
     "naming_force_lowercase": false,
-    "nidcnt": 1000412,
+    "nidcnt": 1000618,
     "BitDepth": 16,
     "Name": "CarTouchScreenMiniDisplay"
   }
