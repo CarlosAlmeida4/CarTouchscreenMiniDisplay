@@ -87,12 +87,12 @@ void LVGL_Init(void)
 #endif
 
     // /*5.Init imu as input device*/
-    lv_indev_drv_init(&indev_en);   
-    indev_en.type = LV_INDEV_TYPE_ENCODER;  
-    indev_en.read_cb = encoder_read_cb;         
-    lv_indev_t * encoder_indev = lv_indev_drv_register(&indev_en);
-    group = lv_group_create();
-    lv_indev_set_group(encoder_indev, group);
+    //lv_indev_drv_init(&indev_en);   
+    //indev_en.type = LV_INDEV_TYPE_ENCODER;  
+    //indev_en.read_cb = encoder_read_cb;         
+    //lv_indev_t * encoder_indev = lv_indev_drv_register(&indev_en);
+    //group = lv_group_create();
+    //lv_indev_set_group(encoder_indev, group);
 
     // /6.Init DMA for transmit color data from memory to SPI
     dma_channel_set_irq0_enabled(dma_tx, true);
@@ -241,7 +241,7 @@ static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t)
    
     QMI8658_read_xyz(acc, gyro, &tim_count);
     sprintf(label_text,"%4.1f \n%4.1f \n%4.1f \n\n%4.1f \n%4.1f \n%4.1f ",acc[0],acc[1],acc[2],gyro[0],gyro[1],gyro[2]);
-    lv_label_set_text(label_imu,label_text);
+    //lv_label_set_text(label_imu,label_text);
     return true;
 }
 
@@ -270,7 +270,7 @@ int main(void)
     // /*Init touch screen*/ 
     CST816S_init(CST816S_Point_Mode);
     // /*Init IMU*/
-    //QMI8658_init();
+    QMI8658_init();
     // /*Init LVGL*/
     LVGL_Init();
     ui_init();
@@ -278,7 +278,7 @@ int main(void)
     while(1)
     {
       lv_task_handler();
-      //DEV_Delay_ms(5); 
+      DEV_Delay_ms(5); 
     }
 
     DEV_Module_Exit();
