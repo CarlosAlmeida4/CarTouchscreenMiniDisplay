@@ -8,26 +8,18 @@
 
 ///////////////////// VARIABLES ////////////////////
 
-// SCREEN: ui_Screen1
-void ui_Screen1_screen_init(void);
-lv_obj_t * ui_Screen1;
-lv_obj_t * ui_Spinner1;
+// SCREEN: ui_Slider
+void ui_Slider_screen_init(void);
+void ui_event_Slider(lv_event_t * e);
+lv_obj_t * ui_Slider;
+lv_obj_t * ui_Arc2;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_Screen3
-void ui_Screen3_screen_init(void);
-lv_obj_t * ui_Screen3;
-lv_obj_t * ui_Bar1;
-lv_obj_t * ui_Arc1;
-// CUSTOM VARIABLES
-
-// SCREEN: ui_Screen4
-void ui_Screen4_screen_init(void);
-lv_obj_t * ui_Screen4;
-lv_obj_t * ui_ImgButton1;
-lv_obj_t * ui_Slider1;
-lv_obj_t * ui_Switch1;
-lv_obj_t * ui_Chart1;
+// SCREEN: ui_Screen7
+void ui_Screen7_screen_init(void);
+void ui_event_Screen7(lv_event_t * e);
+lv_obj_t * ui_Screen7;
+lv_obj_t * ui_Switch2;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -46,6 +38,25 @@ lv_obj_t * ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_Slider(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT) {
+        lv_indev_wait_release(lv_indev_get_act());
+        _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Screen7_screen_init);
+    }
+}
+
+void ui_event_Screen7(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT) {
+        lv_indev_wait_release(lv_indev_get_act());
+        _ui_screen_change(&ui_Slider, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Slider_screen_init);
+    }
+}
 
 ///////////////////// SCREENS ////////////////////
 
@@ -55,9 +66,8 @@ void ui_init(void)
     lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
                                                true, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
-    ui_Screen1_screen_init();
-    ui_Screen3_screen_init();
-    ui_Screen4_screen_init();
+    ui_Slider_screen_init();
+    ui_Screen7_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
-    lv_disp_load_scr(ui_Screen1);
+    lv_disp_load_scr(ui_Slider);
 }

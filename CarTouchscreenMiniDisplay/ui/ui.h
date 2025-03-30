@@ -16,26 +16,18 @@ extern "C" {
 #include "ui_events.h"
 
 
-// SCREEN: ui_Screen1
-void ui_Screen1_screen_init(void);
-extern lv_obj_t * ui_Screen1;
-extern lv_obj_t * ui_Spinner1;
+// SCREEN: ui_Slider
+void ui_Slider_screen_init(void);
+void ui_event_Slider(lv_event_t * e);
+extern lv_obj_t * ui_Slider;
+extern lv_obj_t * ui_Arc2;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_Screen3
-void ui_Screen3_screen_init(void);
-extern lv_obj_t * ui_Screen3;
-extern lv_obj_t * ui_Bar1;
-extern lv_obj_t * ui_Arc1;
-// CUSTOM VARIABLES
-
-// SCREEN: ui_Screen4
-void ui_Screen4_screen_init(void);
-extern lv_obj_t * ui_Screen4;
-extern lv_obj_t * ui_ImgButton1;
-extern lv_obj_t * ui_Slider1;
-extern lv_obj_t * ui_Switch1;
-extern lv_obj_t * ui_Chart1;
+// SCREEN: ui_Screen7
+void ui_Screen7_screen_init(void);
+void ui_event_Screen7(lv_event_t * e);
+extern lv_obj_t * ui_Screen7;
+extern lv_obj_t * ui_Switch2;
 // CUSTOM VARIABLES
 
 // EVENTS
