@@ -22,6 +22,22 @@ extern lv_obj_t * ui_Screen1;
 extern lv_obj_t * ui_Spinner1;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_Screen3
+void ui_Screen3_screen_init(void);
+extern lv_obj_t * ui_Screen3;
+extern lv_obj_t * ui_Bar1;
+extern lv_obj_t * ui_Arc1;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_Screen4
+void ui_Screen4_screen_init(void);
+extern lv_obj_t * ui_Screen4;
+extern lv_obj_t * ui_ImgButton1;
+extern lv_obj_t * ui_Slider1;
+extern lv_obj_t * ui_Switch1;
+extern lv_obj_t * ui_Chart1;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
