@@ -16,11 +16,12 @@ extern "C" {
 #include "ui_events.h"
 
 
-// SCREEN: ui_Slider
-void ui_Slider_screen_init(void);
-void ui_event_Slider(lv_event_t * e);
-extern lv_obj_t * ui_Slider;
-extern lv_obj_t * ui_Arc2;
+// SCREEN: ui_Inclinometer
+void ui_Inclinometer_screen_init(void);
+void ui_event_Inclinometer(lv_event_t * e);
+extern lv_obj_t * ui_Inclinometer;
+extern lv_obj_t * ui_InclinationA;
+extern lv_obj_t * ui_LateralScale;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_Screen7
@@ -30,9 +31,18 @@ extern lv_obj_t * ui_Screen7;
 extern lv_obj_t * ui_Switch2;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_Temperature
+void ui_Temperature_screen_init(void);
+void ui_event_Temperature(lv_event_t * e);
+extern lv_obj_t * ui_Temperature;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
+
+// IMAGES AND IMAGE SETS
+LV_IMG_DECLARE(ui_img_scale_drawio_png);    // assets/Scale.drawio.png
 
 // UI INIT
 void ui_init(void);
