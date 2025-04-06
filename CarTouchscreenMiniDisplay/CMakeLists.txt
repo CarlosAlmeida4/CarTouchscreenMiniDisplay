@@ -44,17 +44,20 @@ add_subdirectory(./lib/LCD)
 add_subdirectory(./lib/Touch)
 add_subdirectory(./lib/QMI8658)
 add_subdirectory(./lib/lvgl)
-add_subdirectory(./examples)
+#add_subdirectory(./examples)
+add_subdirectory(./ui)
 
 
 #添加头文件目录
-include_directories(./examples)
+#include_directories(./examples)
 include_directories(./lib/Config)
 include_directories(./lib/LCD)
 include_directories(./lib/Touch)
 include_directories(./lib/QMI8658)
 include_directories(./lib/lvgl)
-include_directories(./examples/inc)
+#include_directories(./examples/inc)
+include_directories(./ui)
+
 
 
 add_executable(CarTouchscreenMiniDisplay main.c)
@@ -68,7 +71,7 @@ pico_enable_stdio_usb(CarTouchscreenMiniDisplay  0)
 # Add the standard library to the build
 
 set(LV_CONF_PATH
-  ${CMAKE_CURRENT_SOURCE_DIR}/lib/LVGL/lv_conf.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/lv_conf.h
     CACHE STRING "" FORCE)
 add_compile_options(-O2)
 
@@ -79,11 +82,12 @@ add_compile_options(-O2)
                         QMI8658
                         LVGL
                         Config
-                        examples
+                        #examples
                         pico_stdlib
                         hardware_spi
                         hardware_i2c
                         hardware_dma
+                        ui
                         )
 # Add the standard include files to the build
 target_include_directories(CarTouchscreenMiniDisplay   PRIVATE

@@ -56,6 +56,11 @@ void DEV_GPIO_Init(void)
     DEV_Digital_Write(LCD_CS_PIN, 1);
     DEV_Digital_Write(LCD_DC_PIN, 0);
     DEV_Digital_Write(LCD_BL_PIN, 1);
+
+    gpio_init(UART_DEBUG_TX);
+    gpio_init(UART_DEBUG_RX);
+    gpio_set_function(UART_DEBUG_TX, GPIO_FUNC_UART); //TX
+    gpio_set_function(UART_DEBUG_RX, GPIO_FUNC_UART); //RX
 }
 
 /**
