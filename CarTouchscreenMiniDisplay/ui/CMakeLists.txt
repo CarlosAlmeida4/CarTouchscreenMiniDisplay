@@ -4,8 +4,12 @@ SET(SOURCES screens/ui_Inclinometer.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c
-    images/ui_img_scale_drawio_png.c)
- 
+    images/ui_img_scale_png.c
+    fonts/ui_font_HeadingDegree.c
+    fonts/ui_font_SmallerEmblemaOne.c)
+
+
+
  include_directories(../lib/Config)
  include_directories(../lib/LCD)
  include_directories(../lib/QMI8658)

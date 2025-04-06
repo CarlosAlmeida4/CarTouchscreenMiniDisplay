@@ -20,9 +20,24 @@ extern "C" {
 void ui_Inclinometer_screen_init(void);
 void ui_event_Inclinometer(lv_event_t * e);
 extern lv_obj_t * ui_Inclinometer;
-extern lv_obj_t * ui_InclinationA;
+extern lv_obj_t * ui_RollA;
+extern lv_obj_t * ui_RollB;
 extern lv_obj_t * ui_LateralScale;
+extern lv_obj_t * ui_Pitch;
+extern lv_obj_t * ui_HeadingDegrees;
+extern lv_obj_t * ui_CompassDir;
+extern lv_obj_t * ui_PitchText;
+extern lv_obj_t * ui_RollText;
+extern lv_obj_t * ui_PitchName;
+extern lv_obj_t * ui_RollName;
 // CUSTOM VARIABLES
+extern lv_obj_t * uic_RollA;
+extern lv_obj_t * uic_RollB;
+extern lv_obj_t * uic_Pitch;
+extern lv_obj_t * uic_HeadingDegrees;
+extern lv_obj_t * uic_CompassDir;
+extern lv_obj_t * uic_PitchText;
+extern lv_obj_t * uic_RollText;
 
 // SCREEN: ui_Screen7
 void ui_Screen7_screen_init(void);
@@ -42,7 +57,11 @@ extern lv_obj_t * ui_Temperature;
 extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE(ui_img_scale_drawio_png);    // assets/Scale.drawio.png
+LV_IMG_DECLARE(ui_img_scale_png);    // assets/Scale.png
+
+// FONTS
+LV_FONT_DECLARE(ui_font_HeadingDegree);
+LV_FONT_DECLARE(ui_font_SmallerEmblemaOne);
 
 // UI INIT
 void ui_init(void);

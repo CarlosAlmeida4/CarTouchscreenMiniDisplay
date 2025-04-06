@@ -13,8 +13,8 @@ void ui_Screen7_screen_init(void)
     ui_Switch2 = lv_switch_create(ui_Screen7);
     lv_obj_set_width(ui_Switch2, 140);
     lv_obj_set_height(ui_Switch2, 61);
-    lv_obj_set_x(ui_Switch2, 5);
-    lv_obj_set_y(ui_Switch2, -4);
+    lv_obj_set_x(ui_Switch2, 0);
+    lv_obj_set_y(ui_Switch2, 61);
     lv_obj_set_align(ui_Switch2, LV_ALIGN_CENTER);
 
     lv_obj_add_event_cb(ui_Screen7, ui_event_Screen7, LV_EVENT_ALL, NULL);
