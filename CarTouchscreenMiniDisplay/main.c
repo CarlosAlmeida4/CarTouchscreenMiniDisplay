@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <math.h>
 #include "pico/stdlib.h"
 #include "DEV_Config.h"
 #include "LCD_1in28.h"
 #include "CST816S.h"
 #include "QMI8658.h"
-//#include "lvgl.h"
+#include "String.h"
 #include "src/core/lv_obj.h"
 #include "src/misc/lv_area.h"
 #include "ui.h"
@@ -52,6 +53,22 @@ static void dma_handler(void);
 static bool repeating_lvgl_timer_callback(struct repeating_timer *t); 
 static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t); 
 static bool repeating_imu_diff_timer_callback(struct repeating_timer *t);
+
+/********************************************************************************
+function:	Calculate Roll and pitch
+parameter:
+********************************************************************************/
+void CalculateRP(float acc[3], float *RP)
+{
+    float Xbuff = acc[0];
+    float Ybuff = acc[1];
+    float Zbuff = acc[2];
+    
+    RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
+    RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
+    
+    //RP[1] = atan2((- Xbuff) , sqrt(Ybuff * Ybuff + Zbuff * Zbuff)) * 57.3;
+}
 
 /********************************************************************************
 function:	Initializes LVGL and enbable timers IRQ and DMA IRQ
@@ -236,11 +253,14 @@ parameter:
 static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t) 
 {
     char label_text[64];
-    float acc[3], gyro[3];
+    float acc[3], gyro[3],RP[2];
     unsigned int tim_count = 0;
    
     QMI8658_read_xyz(acc, gyro, &tim_count);
-    sprintf(label_text,"%4.1f \n%4.1f \n%4.1f \n\n%4.1f \n%4.1f \n%4.1f ",acc[0],acc[1],acc[2],gyro[0],gyro[1],gyro[2]);
+    CalculateRP(acc,RP);
+    printf("X: %4.1f \nY: %4.1f \nZ: %4.1f \n ",acc[0],acc[1],acc[2]);
+    printf("Roll: %4.1f \nPitch: %4.1f \n ",RP[0],RP[1]);
+    
     //lv_label_set_text(label_imu,label_text);
     return true;
 }
