@@ -29,4 +29,6 @@ void ui_Temperature_screen_init(void)
     lv_label_set_text(ui_Label2, "25");
     lv_obj_set_style_text_font(ui_Label2, &ui_font_Nabla_Big, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    lv_obj_add_event_cb(ui_Temperature, ui_event_Temperature, LV_EVENT_ALL, NULL);
+
 }
