@@ -6,7 +6,7 @@
 #define QMI8658_SLAVE_ADDR_H 0x6b
 #define QMI8658_printf printf
 
-#define QMI8658_UINT_MG_DPS
+//#define QMI8658_UINT_MG_DPS
 
 enum
 {
