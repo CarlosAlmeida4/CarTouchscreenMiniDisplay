@@ -10,7 +10,6 @@
 
 // SCREEN: ui_Inclinometer
 void ui_Inclinometer_screen_init(void);
-void ui_event_Inclinometer(lv_event_t * e);
 lv_obj_t * ui_Inclinometer;
 lv_obj_t * ui_RollA;
 lv_obj_t * ui_RollB;
@@ -31,17 +30,11 @@ lv_obj_t * uic_CompassDir;
 lv_obj_t * uic_PitchText;
 lv_obj_t * uic_RollText;
 
-// SCREEN: ui_Screen7
-void ui_Screen7_screen_init(void);
-void ui_event_Screen7(lv_event_t * e);
-lv_obj_t * ui_Screen7;
-lv_obj_t * ui_Switch2;
-// CUSTOM VARIABLES
-
 // SCREEN: ui_Temperature
 void ui_Temperature_screen_init(void);
-void ui_event_Temperature(lv_event_t * e);
 lv_obj_t * ui_Temperature;
+lv_obj_t * ui_TempLabel;
+lv_obj_t * ui_Label2;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -60,39 +53,6 @@ lv_obj_t * ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
-void ui_event_Inclinometer(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT) {
-        lv_indev_wait_release(lv_indev_get_act());
-        _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Screen7_screen_init);
-    }
-}
-
-void ui_event_Screen7(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT) {
-        lv_indev_wait_release(lv_indev_get_act());
-        _ui_screen_change(&ui_Temperature, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Temperature_screen_init);
-    }
-    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT) {
-        lv_indev_wait_release(lv_indev_get_act());
-        _ui_screen_change(&ui_Inclinometer, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Inclinometer_screen_init);
-    }
-}
-
-void ui_event_Temperature(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_GESTURE &&  lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT) {
-        lv_indev_wait_release(lv_indev_get_act());
-        _ui_screen_change(&ui_Screen7, LV_SCR_LOAD_ANIM_FADE_ON, 50, 0, &ui_Screen7_screen_init);
-    }
-}
 
 ///////////////////// SCREENS ////////////////////
 
@@ -103,7 +63,6 @@ void ui_init(void)
                                                true, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
     ui_Inclinometer_screen_init();
-    ui_Screen7_screen_init();
     ui_Temperature_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Inclinometer);

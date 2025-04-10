@@ -18,7 +18,6 @@ extern "C" {
 
 // SCREEN: ui_Inclinometer
 void ui_Inclinometer_screen_init(void);
-void ui_event_Inclinometer(lv_event_t * e);
 extern lv_obj_t * ui_Inclinometer;
 extern lv_obj_t * ui_RollA;
 extern lv_obj_t * ui_RollB;
@@ -39,17 +38,11 @@ extern lv_obj_t * uic_CompassDir;
 extern lv_obj_t * uic_PitchText;
 extern lv_obj_t * uic_RollText;
 
-// SCREEN: ui_Screen7
-void ui_Screen7_screen_init(void);
-void ui_event_Screen7(lv_event_t * e);
-extern lv_obj_t * ui_Screen7;
-extern lv_obj_t * ui_Switch2;
-// CUSTOM VARIABLES
-
 // SCREEN: ui_Temperature
 void ui_Temperature_screen_init(void);
-void ui_event_Temperature(lv_event_t * e);
 extern lv_obj_t * ui_Temperature;
+extern lv_obj_t * ui_TempLabel;
+extern lv_obj_t * ui_Label2;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -62,6 +55,7 @@ LV_IMG_DECLARE(ui_img_scale_png);    // assets/Scale.png
 // FONTS
 LV_FONT_DECLARE(ui_font_HeadingDegree);
 LV_FONT_DECLARE(ui_font_SmallerEmblemaOne);
+LV_FONT_DECLARE(ui_font_Nabla_Big);
 
 // UI INIT
 void ui_init(void);
