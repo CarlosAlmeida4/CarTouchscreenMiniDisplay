@@ -18,6 +18,7 @@ extern "C" {
 
 // SCREEN: ui_Inclinometer
 void ui_Inclinometer_screen_init(void);
+void ui_event_Inclinometer(lv_event_t * e);
 extern lv_obj_t * ui_Inclinometer;
 extern lv_obj_t * ui_RollA;
 extern lv_obj_t * ui_RollB;
@@ -40,6 +41,7 @@ extern lv_obj_t * uic_RollText;
 
 // SCREEN: ui_Temperature
 void ui_Temperature_screen_init(void);
+void ui_event_Temperature(lv_event_t * e);
 extern lv_obj_t * ui_Temperature;
 extern lv_obj_t * ui_TempLabel;
 extern lv_obj_t * ui_Label2;

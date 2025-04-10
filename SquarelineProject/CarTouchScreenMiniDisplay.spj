@@ -2217,7 +2217,7 @@
                   {
                     "nid": 1000634,
                     "strtype": "CHANGE SCREEN/Screen_to",
-                    "strval": "-",
+                    "strval": "GUID55993465-332757S578489",
                     "InheritedType": 9
                   },
                   {
@@ -2742,7 +2742,7 @@
                   {
                     "nid": 1000670,
                     "strtype": "CHANGE SCREEN/Screen_to",
-                    "strval": "-",
+                    "strval": "GUID13094076-844163S96479",
                     "InheritedType": 9
                   },
                   {
@@ -2813,7 +2813,7 @@
     "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\SquarelineProject\\ui",
     "projectExportFolderPath": "",
     "custom_variable_prefix": "uic",
-    "backup_cnt": 29,
+    "backup_cnt": 30,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",

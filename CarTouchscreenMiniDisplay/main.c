@@ -90,8 +90,8 @@ void CalculateRP(float acc[3], float *RP)
 
     _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
     _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
-    lv_arc_set_value(uic_RollA,(int16_t)normalize(RP[0]));
-    lv_arc_set_value(uic_RollB,(int16_t)normalize(RP[0]));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
     lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
 }
 
