@@ -9,7 +9,24 @@ void ui_Temperature_screen_init(void)
 {
     ui_Temperature = lv_obj_create(NULL);
     lv_obj_clear_flag(ui_Temperature, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_text_font(ui_Temperature, &ui_font_Nabla_Big, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_Temperature, ui_event_Temperature, LV_EVENT_ALL, NULL);
+    ui_TempLabel = lv_label_create(ui_Temperature);
+    lv_obj_set_width(ui_TempLabel, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_TempLabel, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_TempLabel, 1);
+    lv_obj_set_y(ui_TempLabel, -46);
+    lv_obj_set_align(ui_TempLabel, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_TempLabel, "Temperature");
+    lv_obj_set_style_text_font(ui_TempLabel, &ui_font_HeadingDegree, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_Label2 = lv_label_create(ui_Temperature);
+    lv_obj_set_width(ui_Label2, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Label2, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Label2, -2);
+    lv_obj_set_y(ui_Label2, 34);
+    lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_Label2, "25");
+    lv_obj_set_style_text_font(ui_Label2, &ui_font_Nabla_Big, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 }
