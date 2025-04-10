@@ -144,6 +144,7 @@ void ui_Inclinometer_screen_init(void)
     lv_label_set_text(ui_RollName, "Roll");
     lv_obj_set_style_text_font(ui_RollName, &ui_font_SmallerEmblemaOne, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    lv_obj_add_event_cb(ui_Inclinometer, ui_event_Inclinometer, LV_EVENT_ALL, NULL);
     uic_RollA = ui_RollA;
     uic_RollB = ui_RollB;
     uic_Pitch = ui_Pitch;
