@@ -54,6 +54,22 @@ static bool repeating_lvgl_timer_callback(struct repeating_timer *t);
 static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t); 
 static bool repeating_imu_diff_timer_callback(struct repeating_timer *t);
 
+char *turnFloat2Char(float input)
+{
+    char buffer[4];
+    //char buffer[4];
+    int ret = snprintf(buffer, sizeof(buffer), "%f", input);
+
+    if (ret < 0) {
+        //return;
+    }
+    if (ret >= sizeof(buffer)) {
+        /* Result was truncated - resize the buffer and retry.*/
+    }
+    char *retVal = buffer;
+    return retVal;
+}
+
 /********************************************************************************
 function:	Calculate Roll and pitch
 parameter:
@@ -66,8 +82,9 @@ void CalculateRP(float acc[3], float *RP)
     
     RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
     RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
-    
-    //RP[1] = atan2((- Xbuff) , sqrt(Ybuff * Ybuff + Zbuff * Zbuff)) * 57.3;
+
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
 }
 
 /********************************************************************************
