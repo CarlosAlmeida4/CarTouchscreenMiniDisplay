@@ -54,6 +54,11 @@ static bool repeating_lvgl_timer_callback(struct repeating_timer *t);
 static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t); 
 static bool repeating_imu_diff_timer_callback(struct repeating_timer *t);
 
+inline float normalize(float input)
+{
+    return ((10/9)*input + 50);
+}
+
 char *turnFloat2Char(float input)
 {
     char buffer[4];
@@ -85,6 +90,9 @@ void CalculateRP(float acc[3], float *RP)
 
     _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
     _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
+    lv_arc_set_value(uic_RollA,(int16_t)normalize(RP[0]));
+    lv_arc_set_value(uic_RollB,(int16_t)normalize(RP[0]));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
 }
 
 /********************************************************************************
@@ -94,7 +102,7 @@ parameter:
 void LVGL_Init(void)
 {
     // /*1.Init Timer*/ 
-    add_repeating_timer_ms(500, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
+    add_repeating_timer_ms(100, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
     add_repeating_timer_ms(50, repeating_imu_diff_timer_callback,        NULL, &imu_diff_timer);
     add_repeating_timer_ms(5,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
     
