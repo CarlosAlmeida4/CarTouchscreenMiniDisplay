@@ -144,6 +144,17 @@ void ui_Inclinometer_screen_init(void)
     lv_label_set_text(ui_RollName, "Roll");
     lv_obj_set_style_text_font(ui_RollName, &ui_font_SmallerEmblemaOne, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_RollBar = lv_img_create(ui_Inclinometer);
+    lv_img_set_src(ui_RollBar, &ui_img_pitchbar_png);
+    lv_obj_set_width(ui_RollBar, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_RollBar, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_RollBar, 0);
+    lv_obj_set_y(ui_RollBar, -2);
+    lv_obj_set_align(ui_RollBar, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_RollBar, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_clear_flag(ui_RollBar, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_img_set_zoom(ui_RollBar, 345);
+
     lv_obj_add_event_cb(ui_Inclinometer, ui_event_Inclinometer, LV_EVENT_ALL, NULL);
     uic_RollA = ui_RollA;
     uic_RollB = ui_RollB;
@@ -152,5 +163,6 @@ void ui_Inclinometer_screen_init(void)
     uic_CompassDir = ui_CompassDir;
     uic_PitchText = ui_PitchText;
     uic_RollText = ui_RollText;
+    uic_RollBar = ui_RollBar;
 
 }
