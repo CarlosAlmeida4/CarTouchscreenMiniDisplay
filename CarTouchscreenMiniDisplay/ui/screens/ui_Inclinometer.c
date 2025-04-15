@@ -25,7 +25,7 @@ void ui_Inclinometer_screen_init(void)
 
     lv_obj_set_style_arc_color(ui_RollA, lv_color_hex(0xFF0000), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_RollA, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
-    lv_obj_set_style_arc_width(ui_RollA, 50, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_arc_width(ui_RollA, 100, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_RollA, false, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
     lv_obj_set_style_opa(ui_RollA, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
@@ -42,12 +42,12 @@ void ui_Inclinometer_screen_init(void)
     lv_arc_set_mode(ui_RollB, LV_ARC_MODE_REVERSE);
     lv_obj_set_style_arc_color(ui_RollB, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_RollB, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_arc_width(ui_RollB, 50, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_arc_width(ui_RollB, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_RollB, false, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_set_style_arc_color(ui_RollB, lv_color_hex(0xFF0000), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_RollB, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
-    lv_obj_set_style_arc_width(ui_RollB, 50, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_arc_width(ui_RollB, 100, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_RollB, false, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
     lv_obj_set_style_opa(ui_RollB, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
@@ -67,10 +67,10 @@ void ui_Inclinometer_screen_init(void)
     lv_slider_set_range(ui_Pitch, 10, 100);
     lv_slider_set_value(ui_Pitch, 50, LV_ANIM_OFF);
     if(lv_slider_get_mode(ui_Pitch) == LV_SLIDER_MODE_RANGE) lv_slider_set_left_value(ui_Pitch, 0, LV_ANIM_OFF);
-    lv_obj_set_width(ui_Pitch, 70);
+    lv_obj_set_width(ui_Pitch, 76);
     lv_obj_set_height(ui_Pitch, 105);
-    lv_obj_set_x(ui_Pitch, 1);
-    lv_obj_set_y(ui_Pitch, -9);
+    lv_obj_set_x(ui_Pitch, 2);
+    lv_obj_set_y(ui_Pitch, -8);
     lv_obj_set_align(ui_Pitch, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_Pitch, LV_OBJ_FLAG_CLICKABLE);      /// Flags
     lv_obj_set_style_radius(ui_Pitch, 10, LV_PART_MAIN | LV_STATE_DEFAULT);

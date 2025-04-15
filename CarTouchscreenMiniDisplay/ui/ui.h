@@ -55,9 +55,9 @@ extern lv_obj_t * ui____initial_actions0;
 LV_IMG_DECLARE(ui_img_scale_png);    // assets/Scale.png
 
 // FONTS
+LV_FONT_DECLARE(ui_font_Nabla_Big);
 LV_FONT_DECLARE(ui_font_HeadingDegree);
 LV_FONT_DECLARE(ui_font_SmallerEmblemaOne);
-LV_FONT_DECLARE(ui_font_Nabla_Big);
 
 // UI INIT
 void ui_init(void);
