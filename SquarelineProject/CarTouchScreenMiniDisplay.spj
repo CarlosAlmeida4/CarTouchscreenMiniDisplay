@@ -388,7 +388,7 @@
             "guid": "GUID48568080-382675S861495",
             "deepid": -1997685613,
             "dont_export": false,
-            "locked": false,
+            "locked": true,
             "properties": [
               {
                 "nid": 10,
@@ -816,7 +816,7 @@
             "guid": "GUID86049190-382682S484496",
             "deepid": 134374031,
             "dont_export": false,
-            "locked": true,
+            "locked": false,
             "properties": [
               {
                 "nid": 10,
@@ -862,7 +862,7 @@
                 "strtype": "OBJECT/Position",
                 "intarray": [
                   2,
-                  -9
+                  -8
                 ],
                 "InheritedType": 7
               },
@@ -2813,7 +2813,7 @@
     "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\SquarelineProject\\ui",
     "projectExportFolderPath": "",
     "custom_variable_prefix": "uic",
-    "backup_cnt": 30,
+    "backup_cnt": 31,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",

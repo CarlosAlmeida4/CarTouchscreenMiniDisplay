@@ -70,7 +70,7 @@ void ui_Inclinometer_screen_init(void)
     lv_obj_set_width(ui_Pitch, 76);
     lv_obj_set_height(ui_Pitch, 105);
     lv_obj_set_x(ui_Pitch, 2);
-    lv_obj_set_y(ui_Pitch, -9);
+    lv_obj_set_y(ui_Pitch, -8);
     lv_obj_set_align(ui_Pitch, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_Pitch, LV_OBJ_FLAG_CLICKABLE);      /// Flags
     lv_obj_set_style_radius(ui_Pitch, 10, LV_PART_MAIN | LV_STATE_DEFAULT);
