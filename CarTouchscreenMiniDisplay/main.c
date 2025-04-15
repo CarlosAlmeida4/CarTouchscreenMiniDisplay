@@ -93,6 +93,7 @@ void CalculateRP(float acc[3], float *RP)
     lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
     lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
     lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
+    lv_img_set_angle(uic_RollBar,(int16_t)(-RP[0]*9.5556));
 }
 
 /********************************************************************************
@@ -102,9 +103,9 @@ parameter:
 void LVGL_Init(void)
 {
     // /*1.Init Timer*/ 
-    add_repeating_timer_ms(100, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
+    add_repeating_timer_ms(300, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
     add_repeating_timer_ms(50, repeating_imu_diff_timer_callback,        NULL, &imu_diff_timer);
-    add_repeating_timer_ms(5,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
+    add_repeating_timer_ms(20,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
     
     // /*2.Init LVGL core*/
     lv_init();
