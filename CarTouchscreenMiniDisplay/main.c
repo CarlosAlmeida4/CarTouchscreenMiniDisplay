@@ -103,9 +103,9 @@ parameter:
 void LVGL_Init(void)
 {
     // /*1.Init Timer*/ 
-    add_repeating_timer_ms(300, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
+    add_repeating_timer_ms(100, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
     add_repeating_timer_ms(50, repeating_imu_diff_timer_callback,        NULL, &imu_diff_timer);
-    add_repeating_timer_ms(20,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
+    add_repeating_timer_ms(10,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
     
     // /*2.Init LVGL core*/
     lv_init();
