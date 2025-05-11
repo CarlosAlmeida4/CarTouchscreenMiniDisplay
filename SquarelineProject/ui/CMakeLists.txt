@@ -4,8 +4,8 @@ SET(SOURCES screens/ui_Inclinometer.c
     components/ui_comp_hook.c
     ui_helpers.c
     images/ui_img_scale_png.c
+    fonts/ui_font_Nabla_Big.c
     fonts/ui_font_HeadingDegree.c
-    fonts/ui_font_SmallerEmblemaOne.c
-    fonts/ui_font_Nabla_Big.c)
+    fonts/ui_font_SmallerEmblemaOne.c)
 
 add_library(ui ${SOURCES})

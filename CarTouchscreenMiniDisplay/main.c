@@ -103,7 +103,7 @@ void LVGL_Init(void)
 {
     // /*1.Init Timer*/ 
     add_repeating_timer_ms(100, repeating_imu_data_update_timer_callback, NULL, &imu_data_update_timer);
-    add_repeating_timer_ms(50, repeating_imu_diff_timer_callback,        NULL, &imu_diff_timer);
+    //add_repeating_timer_ms(50, repeating_imu_diff_timer_callback,        NULL, &imu_diff_timer);
     add_repeating_timer_ms(5,   repeating_lvgl_timer_callback,            NULL, &lvgl_timer);
     
     // /*2.Init LVGL core*/
@@ -283,8 +283,8 @@ static bool repeating_imu_data_update_timer_callback(struct repeating_timer *t)
    
     QMI8658_read_xyz(acc, gyro, &tim_count);
     CalculateRP(acc,RP);
-    printf("X: %4.1f \nY: %4.1f \nZ: %4.1f \n ",acc[0],acc[1],acc[2]);
-    printf("Roll: %4.1f \nPitch: %4.1f \n ",RP[0],RP[1]);
+    //printf("X: %4.1f \nY: %4.1f \nZ: %4.1f \n ",acc[0],acc[1],acc[2]);
+    //printf("Roll: %4.1f \nPitch: %4.1f \n ",RP[0],RP[1]);
     
     //lv_label_set_text(label_imu,label_text);
     return true;

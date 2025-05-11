@@ -16,8 +16,6 @@ lv_obj_t * ui_RollA;
 lv_obj_t * ui_RollB;
 lv_obj_t * ui_LateralScale;
 lv_obj_t * ui_Pitch;
-lv_obj_t * ui_HeadingDegrees;
-lv_obj_t * ui_CompassDir;
 lv_obj_t * ui_PitchText;
 lv_obj_t * ui_RollText;
 lv_obj_t * ui_PitchName;
@@ -26,8 +24,6 @@ lv_obj_t * ui_RollName;
 lv_obj_t * uic_RollA;
 lv_obj_t * uic_RollB;
 lv_obj_t * uic_Pitch;
-lv_obj_t * uic_HeadingDegrees;
-lv_obj_t * uic_CompassDir;
 lv_obj_t * uic_PitchText;
 lv_obj_t * uic_RollText;
 
