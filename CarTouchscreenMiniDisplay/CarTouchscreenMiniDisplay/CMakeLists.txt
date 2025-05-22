@@ -66,3 +66,7 @@ target_link_libraries(CarTouchscreenMiniDisplay
 
 pico_add_extra_outputs(CarTouchscreenMiniDisplay)
 
+# Hardware-specific examples in subdirectories:
+add_subdirectory(libraries)
+# add_subdirectory(examples)
+
