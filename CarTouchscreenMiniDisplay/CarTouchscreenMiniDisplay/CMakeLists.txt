@@ -35,7 +35,11 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(CarTouchscreenMiniDisplay CarTouchscreenMiniDisplay.cpp )
+add_executable(CarTouchscreenMiniDisplay CarTouchscreenMiniDisplay.cpp 
+    ../lv_port/lv_port_disp.c
+    ../lv_port/lv_port_indev.c
+    ../lv_port/lv_port_fs.c
+    )
 
 pico_set_program_name(CarTouchscreenMiniDisplay "CarTouchscreenMiniDisplay")
 pico_set_program_version(CarTouchscreenMiniDisplay "0.1")
@@ -44,8 +48,8 @@ pico_set_program_version(CarTouchscreenMiniDisplay "0.1")
 pico_generate_pio_header(CarTouchscreenMiniDisplay ${CMAKE_CURRENT_LIST_DIR}/blink.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(CarTouchscreenMiniDisplay 1)
-pico_enable_stdio_usb(CarTouchscreenMiniDisplay 0)
+pico_enable_stdio_uart(CarTouchscreenMiniDisplay 0)
+pico_enable_stdio_usb(CarTouchscreenMiniDisplay 1)
 
 # Add the standard library to the build
 target_link_libraries(CarTouchscreenMiniDisplay
@@ -62,11 +66,16 @@ target_link_libraries(CarTouchscreenMiniDisplay
         hardware_i2c
         hardware_dma
         hardware_pio
+        lvgl
+        bsp
+        lvgl_ui
+        no-OS-FatFS-SD-SDIO-SPI-RPi-Pico
         )
 
 pico_add_extra_outputs(CarTouchscreenMiniDisplay)
 
 # Hardware-specific examples in subdirectories:
 add_subdirectory(libraries)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lvgl_ui)
 # add_subdirectory(examples)
 
