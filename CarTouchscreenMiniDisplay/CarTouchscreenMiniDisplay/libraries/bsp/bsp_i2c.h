@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BSP_I2C_H__
 #define __BSP_I2C_H__
 
@@ -23,3 +27,6 @@ void bsp_i2c_init(void);
 
 #endif
 
+#ifdef __cplusplus
+}
+#endif

@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #ifndef __BSP_QMI8658_H__
 #define __BSP_QMI8658_H__
 
@@ -95,4 +100,8 @@ typedef struct{
 
 void bsp_qmi8658_init(void);
 void bsp_qmi8658_read_data(qmi8658_data_t *data);
+#endif
+
+#ifdef __cplusplus
+}
 #endif

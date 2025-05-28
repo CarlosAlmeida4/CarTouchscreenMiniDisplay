@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #ifndef __BSP_FT6146_H__
 #define __BSP_FT6146_H__
 #include <stdio.h>
@@ -62,4 +67,8 @@ void bsp_ft6146_set_rotation(uint16_t rotation);
 bool bsp_ft6146_get_touch_data(bsp_ft6146_data_t *ft6146_data);
 void bsp_ft6146_read(void);
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

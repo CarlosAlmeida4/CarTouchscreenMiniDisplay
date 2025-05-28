@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BSP_PCF85063_H__
 #define __BSP_PCF85063_H__
 
@@ -38,4 +42,8 @@ void bsp_pcf85063_get_time(struct tm *now_tm);
 void bsp_pcf85063_set_time(struct tm *now_tm);
 // void bsp_pcf85063_test(void);
 
+#endif
+
+#ifdef __cplusplus
+}
 #endif

@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BSP_BATTERY_H__
 #define __BSP_BATTERY_H__
 
@@ -15,3 +19,6 @@ void bsp_battery_read(float *voltage, uint16_t *adc_raw);
 
 #endif // __BSP_BATTERY_H__
 
+#ifdef __cplusplus
+}
+#endif

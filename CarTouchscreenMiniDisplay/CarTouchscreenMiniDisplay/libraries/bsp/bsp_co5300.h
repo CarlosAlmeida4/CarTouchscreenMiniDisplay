@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BSP_CO5300_H__
 #define __BSP_CO5300_H__
 
@@ -54,3 +59,7 @@ void bsp_co5300_set_brightness(uint8_t brightness);
 void bsp_co5300_set_power(bool on);
 
 #endif // __BSP_CO5300_H__
+
+#ifdef __cplusplus
+}
+#endif

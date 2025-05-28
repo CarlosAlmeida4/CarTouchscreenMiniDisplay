@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef __BSP_DMA_CHANNEL_IRQ_H__
 #define __BSP_DMA_CHANNEL_IRQ_H__
 
@@ -15,3 +19,6 @@ void bsp_dma_channel_irq_add(uint8_t irq_num, uint dma_channel, channel_irq_call
 
 #endif // __BSP_DMA_CHANNEL_IRQ_H__
 
+#ifdef __cplusplus
+}
+#endif

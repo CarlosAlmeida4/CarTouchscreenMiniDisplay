@@ -58,3 +58,4 @@ void bsp_dma_channel_irq1_init(void)
     irq_set_exclusive_handler(DMA_IRQ_1, dma_iqr1_handler);
     irq_set_enabled(DMA_IRQ_1, true);
 }
+
