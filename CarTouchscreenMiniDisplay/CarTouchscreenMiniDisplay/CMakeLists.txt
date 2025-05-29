@@ -62,7 +62,7 @@ target_include_directories(CarTouchscreenMiniDisplay PRIVATE
 
 # Hardware-specific examples in subdirectories:
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/libraries)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/lvgl_ui)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/ui)
 # add_subdirectory(examples)
 
 # Add any user requested libraries
@@ -73,7 +73,7 @@ target_link_libraries(CarTouchscreenMiniDisplay
         hardware_pio
         lvgl
         bsp
-        lvgl_ui
+        ui
         no-OS-FatFS-SD-SDIO-SPI-RPi-Pico
         )
 

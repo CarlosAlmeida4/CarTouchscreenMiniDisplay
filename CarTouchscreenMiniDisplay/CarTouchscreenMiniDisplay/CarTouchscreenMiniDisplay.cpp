@@ -21,7 +21,7 @@
 #include "hardware/structs/pll.h"
 #include "hardware/structs/clocks.h"
 
-#include "lvgl_ui/lvgl_ui.h"
+#include "ui.h"
 
 #define LVGL_TICK_PERIOD_MS 5
 
