@@ -10,8 +10,8 @@ void ui_Inclinometer_screen_init(void)
     ui_Inclinometer = lv_obj_create(NULL);
 
     ui_RollA = lv_arc_create(ui_Inclinometer);
-    lv_obj_set_width(ui_RollA, 217);
-    lv_obj_set_height(ui_RollA, 214);
+    lv_obj_set_width(ui_RollA, 439);
+    lv_obj_set_height(ui_RollA, 430);
     lv_obj_set_x(ui_RollA, 1);
     lv_obj_set_y(ui_RollA, -1);
     lv_obj_set_align(ui_RollA, LV_ALIGN_CENTER);
@@ -25,16 +25,16 @@ void ui_Inclinometer_screen_init(void)
 
     lv_obj_set_style_arc_color(ui_RollA, lv_color_hex(0x868686), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_RollA, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
-    lv_obj_set_style_arc_width(ui_RollA, 50, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_arc_width(ui_RollA, 110, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_RollA, false, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
     lv_obj_set_style_opa(ui_RollA, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
 
     ui_RollB = lv_arc_create(ui_Inclinometer);
-    lv_obj_set_width(ui_RollB, 212);
-    lv_obj_set_height(ui_RollB, 222);
-    lv_obj_set_x(ui_RollB, 3);
-    lv_obj_set_y(ui_RollB, 4);
+    lv_obj_set_width(ui_RollB, 439);
+    lv_obj_set_height(ui_RollB, 430);
+    lv_obj_set_x(ui_RollB, 8);
+    lv_obj_set_y(ui_RollB, -1);
     lv_obj_set_align(ui_RollB, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_RollB, LV_OBJ_FLAG_CLICKABLE);      /// Flags
     lv_arc_set_value(ui_RollB, 50);
@@ -47,7 +47,7 @@ void ui_Inclinometer_screen_init(void)
 
     lv_obj_set_style_arc_color(ui_RollB, lv_color_hex(0x868686), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_RollB, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
-    lv_obj_set_style_arc_width(ui_RollB, 50, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_arc_width(ui_RollB, 110, LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_rounded(ui_RollB, false, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
     lv_obj_set_style_opa(ui_RollB, 0, LV_PART_KNOB | LV_STATE_DEFAULT);
@@ -61,16 +61,16 @@ void ui_Inclinometer_screen_init(void)
     lv_obj_set_align(ui_LateralScale, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_LateralScale, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
     lv_obj_clear_flag(ui_LateralScale, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_img_set_zoom(ui_LateralScale, 357);
+    lv_img_set_zoom(ui_LateralScale, 700);
 
     ui_Pitch = lv_slider_create(ui_Inclinometer);
     lv_slider_set_range(ui_Pitch, 10, 100);
     lv_slider_set_value(ui_Pitch, 50, LV_ANIM_OFF);
     if(lv_slider_get_mode(ui_Pitch) == LV_SLIDER_MODE_RANGE) lv_slider_set_left_value(ui_Pitch, 0, LV_ANIM_OFF);
-    lv_obj_set_width(ui_Pitch, 76);
-    lv_obj_set_height(ui_Pitch, 105);
-    lv_obj_set_x(ui_Pitch, 2);
-    lv_obj_set_y(ui_Pitch, -8);
+    lv_obj_set_width(ui_Pitch, 150);
+    lv_obj_set_height(ui_Pitch, 176);
+    lv_obj_set_x(ui_Pitch, 1);
+    lv_obj_set_y(ui_Pitch, -11);
     lv_obj_set_align(ui_Pitch, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_Pitch, LV_OBJ_FLAG_CLICKABLE);      /// Flags
     lv_obj_set_style_radius(ui_Pitch, 4, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -93,8 +93,8 @@ void ui_Inclinometer_screen_init(void)
     ui_PitchText = lv_label_create(ui_Inclinometer);
     lv_obj_set_width(ui_PitchText, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_PitchText, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_PitchText, 28);
-    lv_obj_set_y(ui_PitchText, -85);
+    lv_obj_set_x(ui_PitchText, 40);
+    lv_obj_set_y(ui_PitchText, -158);
     lv_obj_set_align(ui_PitchText, LV_ALIGN_CENTER);
     lv_label_set_text(ui_PitchText, "-45");
     lv_obj_set_style_text_font(ui_PitchText, &ui_font_HeadingDegree, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -102,8 +102,8 @@ void ui_Inclinometer_screen_init(void)
     ui_RollText = lv_label_create(ui_Inclinometer);
     lv_obj_set_width(ui_RollText, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_RollText, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_RollText, 23);
-    lv_obj_set_y(ui_RollText, 82);
+    lv_obj_set_x(ui_RollText, 41);
+    lv_obj_set_y(ui_RollText, 157);
     lv_obj_set_align(ui_RollText, LV_ALIGN_CENTER);
     lv_label_set_text(ui_RollText, "-45");
     lv_obj_set_style_text_font(ui_RollText, &ui_font_HeadingDegree, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -111,8 +111,8 @@ void ui_Inclinometer_screen_init(void)
     ui_PitchName = lv_label_create(ui_Inclinometer);
     lv_obj_set_width(ui_PitchName, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_PitchName, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_PitchName, -27);
-    lv_obj_set_y(ui_PitchName, -87);
+    lv_obj_set_x(ui_PitchName, -38);
+    lv_obj_set_y(ui_PitchName, -160);
     lv_obj_set_align(ui_PitchName, LV_ALIGN_CENTER);
     lv_label_set_text(ui_PitchName, "Pitch");
     lv_obj_set_style_text_font(ui_PitchName, &ui_font_SmallerEmblemaOne, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -120,8 +120,8 @@ void ui_Inclinometer_screen_init(void)
     ui_RollName = lv_label_create(ui_Inclinometer);
     lv_obj_set_width(ui_RollName, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_RollName, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_RollName, -28);
-    lv_obj_set_y(ui_RollName, 81);
+    lv_obj_set_x(ui_RollName, -51);
+    lv_obj_set_y(ui_RollName, 156);
     lv_obj_set_align(ui_RollName, LV_ALIGN_CENTER);
     lv_label_set_text(ui_RollName, "Roll");
     lv_obj_set_style_text_font(ui_RollName, &ui_font_SmallerEmblemaOne, LV_PART_MAIN | LV_STATE_DEFAULT);

@@ -12,7 +12,6 @@ extern "C" {
 
 #include "lvgl.h"
 
-//#include "lv_i18n.h"
 #include "ui_helpers.h"
 #include "ui_events.h"
 
