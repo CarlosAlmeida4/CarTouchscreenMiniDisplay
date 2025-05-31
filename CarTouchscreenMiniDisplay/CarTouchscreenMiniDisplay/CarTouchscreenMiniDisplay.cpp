@@ -24,10 +24,52 @@
 #include "ui.h"
 
 #define LVGL_TICK_PERIOD_MS 5
+#define BSP_TICK_PERIOD_MS 10
+
 
 #define DISP_HOR_RES 466
 #define DISP_VER_RES 466
 
+inline float normalize(float input)
+{
+    return ((10/9)*input + 50);
+}
+
+char *turnFloat2Char(float input)
+{
+    char buffer[4];
+    //char buffer[4];
+    int ret = snprintf(buffer, sizeof(buffer), "%f", input);
+
+    if (ret < 0) {
+        //return;
+    }
+    if (ret >= sizeof(buffer)) {
+        /* Result was truncated - resize the buffer and retry.*/
+    }
+    char *retVal = buffer;
+    return retVal;
+}
+
+/********************************************************************************
+function:	Calculate Roll and pitch
+parameter:
+********************************************************************************/
+void CalculateRP(float acc[3], float *RP)
+{
+    float Xbuff = acc[0];
+    float Ybuff = acc[1];
+    float Zbuff = acc[2];
+    
+    RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
+    RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
+
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
+}
 
 void set_cpu_clock(uint32_t freq_Mhz)
 {
@@ -43,10 +85,49 @@ void set_cpu_clock(uint32_t freq_Mhz)
 
 static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 {
+/*
+    qmi8658_data_t data;
+    bsp_qmi8658_read_data(&data);
+    float RP[2];
+    float Xbuff = data.acc_x;
+    float Ybuff = data.acc_y;
+    float Zbuff = data.acc_z;
+    
+    RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
+    RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
+
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
+*/
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
+    
     return true;
 }
 
+static bool repeating_bsp_timer_cb(struct repeating_timer *t)
+{
+    qmi8658_data_t data;
+    bsp_qmi8658_read_data(&data);
+    float RP[2];
+    float Xbuff = data.acc_x;
+    float Ybuff = data.acc_y;
+    float Zbuff = data.acc_z;
+    
+    //RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
+    //RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
+    RP[0] = 50;
+    RP[1] = 50;
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
+
+    return true;
+}
 int main()
 {
     struct tm now_tm;
@@ -75,7 +156,9 @@ int main()
     lv_port_disp_init(DISP_HOR_RES, DISP_VER_RES, 0, false);
     lv_port_indev_init(DISP_HOR_RES, DISP_VER_RES, 0);
     static struct repeating_timer lvgl_timer;
+    static struct repeating_timer bsp_timer;
     add_repeating_timer_ms(LVGL_TICK_PERIOD_MS, repeating_lvgl_timer_cb, NULL, &lvgl_timer);
+    add_repeating_timer_ms(BSP_TICK_PERIOD_MS, repeating_bsp_timer_cb, NULL, &bsp_timer); 
     // lv_demo_widgets();
     ui_init();
     while (true)
