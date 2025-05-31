@@ -65,6 +65,8 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/libraries)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/ui)
 # add_subdirectory(examples)
 
+include_directories(./ui)
+
 # Add any user requested libraries
 target_link_libraries(CarTouchscreenMiniDisplay 
         hardware_spi

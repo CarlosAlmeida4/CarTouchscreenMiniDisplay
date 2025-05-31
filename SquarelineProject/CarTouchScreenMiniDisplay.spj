@@ -1218,12 +1218,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -1245,6 +1239,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL",
@@ -1385,12 +1385,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -1412,6 +1406,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL"
@@ -1543,12 +1543,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -1570,6 +1564,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL"
@@ -1701,12 +1701,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -1728,6 +1722,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL"
@@ -2046,12 +2046,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -2073,6 +2067,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL"
@@ -2204,12 +2204,6 @@
                 "InheritedType": 10
               },
               {
-                "nid": 1050,
-                "strtype": "LABEL/Recolor",
-                "strval": "False",
-                "InheritedType": 2
-              },
-              {
                 "part": "lv.PART.MAIN",
                 "childs": [
                   {
@@ -2231,6 +2225,12 @@
                 "strtype": "LABEL/Style_main",
                 "strval": "lv.PART.MAIN, Text, Rectangle, Pad, Transform",
                 "InheritedType": 11
+              },
+              {
+                "nid": 1050,
+                "strtype": "LABEL/Recolor",
+                "strval": "False",
+                "InheritedType": 2
               }
             ],
             "saved_objtypeKey": "LABEL"
@@ -2464,7 +2464,7 @@
     "offset_x": 0,
     "offset_y": 0,
     "shape": "CIRCLE",
-    "multilang": "DISABLE",
+    "multilang": "ENABLE",
     "description": "",
     "board": "Raspberry Pico - CMake/VSCode/Eclipse cross-develop",
     "board_version": "v1.0.0",
@@ -2479,13 +2479,13 @@
     "theme_dark": true,
     "theme_color1": 5,
     "theme_color2": 0,
-    "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\SquarelineProject\\ui",
+    "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\CarTouchscreenMiniDisplay\\CarTouchscreenMiniDisplay\\ui",
     "projectExportFolderPath": "",
     "custom_variable_prefix": "uic",
-    "backup_cnt": 32,
+    "backup_cnt": 33,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
-    "lvgl_version": "8.3.11",
+    "lvgl_version": "8.3.6",
     "callfuncsexport": "C_FILE",
     "imageexport": "SOURCE",
     "lvgl_include_path": "lvgl.h",
@@ -2499,7 +2499,7 @@
     "drive_fatfs_path": "",
     "naming": "Name",
     "naming_force_lowercase": false,
-    "nidcnt": 1000954,
+    "nidcnt": 1001160,
     "BitDepth": 16,
     "Name": "CarTouchScreenMiniDisplay"
   }

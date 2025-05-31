@@ -77,7 +77,7 @@ int main()
     static struct repeating_timer lvgl_timer;
     add_repeating_timer_ms(LVGL_TICK_PERIOD_MS, repeating_lvgl_timer_cb, NULL, &lvgl_timer);
     // lv_demo_widgets();
-    lvgl_ui_init();
+    ui_init();
     while (true)
     {
         lv_timer_handler();

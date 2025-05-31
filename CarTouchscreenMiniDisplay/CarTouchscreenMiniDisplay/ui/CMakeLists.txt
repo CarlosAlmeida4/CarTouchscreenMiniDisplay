@@ -8,4 +8,6 @@ SET(SOURCES screens/ui_Inclinometer.c
     fonts/ui_font_HeadingDegree.c
     fonts/ui_font_SmallerEmblemaOne.c)
 
+ include_directories(../libraries/lvgl)
+
 add_library(ui ${SOURCES})
