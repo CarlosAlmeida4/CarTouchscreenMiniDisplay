@@ -1,8 +1,8 @@
-# 查找当前目录下的所有源文件
-# 并将名称保存到 DIR_Config_SRCS 变量
+# Search for all source files in the current directory
+# and save the names to the DIR_Config_SRCS variable
 aux_source_directory(. DIR_BSP_SRCS)
 
-# 生成链接库
+# Generate link library
 add_library(bsp ${DIR_BSP_SRCS})
 
 

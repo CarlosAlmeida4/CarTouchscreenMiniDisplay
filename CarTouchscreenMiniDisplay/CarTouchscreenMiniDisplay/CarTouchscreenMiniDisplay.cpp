@@ -11,7 +11,7 @@
 #include "../lv_port/lv_port_fs.h"
 #include "demos/lv_demos.h"
 #include "libraries\bsp\bsp_i2c.h"
-#include "libraries\bsp\bsp_qmi8658.h"
+//#include "libraries\bsp\bsp_qmi8658.h"
 #include "libraries\bsp\bsp_pcf85063.h"
 #include "libraries\bsp\bsp_battery.h"
 
@@ -22,6 +22,7 @@
 #include "hardware/structs/clocks.h"
 
 #include "ui.h"
+#include "AccelInterface.h"
 
 #define LVGL_TICK_PERIOD_MS 5
 #define BSP_TICK_PERIOD_MS 100
@@ -96,25 +97,25 @@ static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 
 static bool repeating_bsp_timer_cb(struct repeating_timer *t)
 {
-    qmi8658_data_t data;
-    bsp_qmi8658_read_data(&data);
-    float RP[2];
-    float Xbuff = data.acc_x;
-    float Ybuff = data.acc_y;
-    float Zbuff = data.acc_z;
-    //printf("acc: %5d %5d %5d , gyr:%5d %5d %5d\r\n", data.acc_x, data.acc_y, data.acc_z, data.gyr_x, data.gyr_y, data.gyr_z);
-    //printf("acc: %f %f %f \r\n", data.AngleX, data.AngleY, data.AngleZ);
-    RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
-    RP[1] = atan2(Zbuff,-Ybuff ) * 57.3;
-    pitch = RP[1];
-    //printf("Pitch: %f Roll %f \n",RP[0],RP[1]);
-    //RP[0] = 50;
-    //RP[1] = 50;
-    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleX));
-    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleZ));
-    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-data.AngleX)));
-    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(data.AngleX)));
-    lv_slider_set_value(uic_Pitch,(int32_t)normalize(pitch), LV_ANIM_ON);
+    //qmi8658_data_t data;
+    //bsp_qmi8658_read_data(&data);
+    //float RP[2];
+    //float Xbuff = data.acc_x;
+    //float Ybuff = data.acc_y;
+    //float Zbuff = data.acc_z;
+    ////printf("acc: %5d %5d %5d , gyr:%5d %5d %5d\r\n", data.acc_x, data.acc_y, data.acc_z, data.gyr_x, data.gyr_y, data.gyr_z);
+    ////printf("acc: %f %f %f \r\n", data.AngleX, data.AngleY, data.AngleZ);
+    //RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
+    //RP[1] = atan2(Zbuff,-Ybuff ) * 57.3;
+    //pitch = RP[1];
+    ////printf("Pitch: %f Roll %f \n",RP[0],RP[1]);
+    ////RP[0] = 50;
+    ////RP[1] = 50;
+    //_ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleX));
+    //_ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleZ));
+    //lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-data.AngleX)));
+    //lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(data.AngleX)));
+    //lv_slider_set_value(uic_Pitch,(int32_t)normalize(pitch), LV_ANIM_ON);
 
     return true;
 }
@@ -127,7 +128,7 @@ int main()
     bsp_battery_init();
     adc_set_temp_sensor_enabled(true);
     bsp_i2c_init();
-    bsp_qmi8658_init();
+    //bsp_qmi8658_init();
     bsp_pcf85063_init();
     bsp_pcf85063_get_time(&now_tm);
     if (now_tm.tm_year < 125 || now_tm.tm_year > 130)
