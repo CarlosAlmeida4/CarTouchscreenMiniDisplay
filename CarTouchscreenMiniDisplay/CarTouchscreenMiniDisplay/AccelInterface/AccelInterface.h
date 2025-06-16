@@ -1,6 +1,6 @@
 // AccelInterface.h
 #pragma once
-
+#include "bsp_qmi8658.h"
 
 class AccelInterface {
 public:

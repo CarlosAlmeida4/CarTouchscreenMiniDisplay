@@ -31,7 +31,8 @@
 #define DISP_HOR_RES 466
 #define DISP_VER_RES 466
 
-float pitch = 0;
+
+AccelInterface accInter;
 
 inline float normalize(float input)
 {
@@ -89,14 +90,12 @@ void set_cpu_clock(uint32_t freq_Mhz)
 static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 {
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
-    //for(int i = 0; i<1000;i++);
-    printf("%f \n", pitch);
-    
     return true;
 }
 
 static bool repeating_bsp_timer_cb(struct repeating_timer *t)
 {
+    AccelInterface::RollPitch RP = accInter.getPitchAndRoll();
     //qmi8658_data_t data;
     //bsp_qmi8658_read_data(&data);
     //float RP[2];
@@ -111,11 +110,11 @@ static bool repeating_bsp_timer_cb(struct repeating_timer *t)
     ////printf("Pitch: %f Roll %f \n",RP[0],RP[1]);
     ////RP[0] = 50;
     ////RP[1] = 50;
-    //_ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleX));
-    //_ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleZ));
-    //lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-data.AngleX)));
-    //lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(data.AngleX)));
-    //lv_slider_set_value(uic_Pitch,(int32_t)normalize(pitch), LV_ANIM_ON);
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.roll));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.pitch));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-RP.roll)));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP.roll)));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP.pitch), LV_ANIM_ON);
 
     return true;
 }
@@ -128,9 +127,10 @@ int main()
     bsp_battery_init();
     adc_set_temp_sensor_enabled(true);
     bsp_i2c_init();
-    //bsp_qmi8658_init();
+    
     bsp_pcf85063_init();
     bsp_pcf85063_get_time(&now_tm);
+    accInter.initialize();
     if (now_tm.tm_year < 125 || now_tm.tm_year > 130)
     {
         now_tm.tm_year = 2025 - 1900; // The year starts from 1900
