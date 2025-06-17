@@ -179,8 +179,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Size",
                 "intarray": [
-                  217,
-                  214
+                  439,
+                  430
                 ],
                 "InheritedType": 7
               },
@@ -425,7 +425,6 @@
               },
               {
                 "nid": 40,
-                "flags": 1048576,
                 "strtype": "OBJECT/Transform",
                 "InheritedType": 1
               },
@@ -434,8 +433,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  3,
-                  4
+                  8,
+                  -1
                 ],
                 "InheritedType": 7
               },
@@ -444,8 +443,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Size",
                 "intarray": [
-                  212,
-                  222
+                  439,
+                  430
                 ],
                 "InheritedType": 7
               },
@@ -777,7 +776,7 @@
               {
                 "nid": 1020,
                 "strtype": "IMAGE/Asset",
-                "strval": "assets/Scale.png",
+                "strval": "assets/Scale_revamp.png",
                 "InheritedType": 5
               },
               {
@@ -797,7 +796,7 @@
               {
                 "nid": 1050,
                 "strtype": "IMAGE/Scale",
-                "integer": 357,
+                "integer": 700,
                 "InheritedType": 6
               },
               {
@@ -816,7 +815,7 @@
             "guid": "GUID86049190-382682S484496",
             "deepid": 134374031,
             "dont_export": false,
-            "locked": true,
+            "locked": false,
             "properties": [
               {
                 "nid": 10,
@@ -861,8 +860,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  2,
-                  -8
+                  1,
+                  -11
                 ],
                 "InheritedType": 7
               },
@@ -871,8 +870,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Size",
                 "intarray": [
-                  76,
-                  105
+                  150,
+                  176
                 ],
                 "InheritedType": 7
               },
@@ -1131,8 +1130,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  28,
-                  -85
+                  40,
+                  -158
                 ],
                 "InheritedType": 7
               },
@@ -1298,8 +1297,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  23,
-                  82
+                  41,
+                  157
                 ],
                 "InheritedType": 7
               },
@@ -1456,8 +1455,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  -27,
-                  -87
+                  -38,
+                  -160
                 ],
                 "InheritedType": 7
               },
@@ -1572,7 +1571,8 @@
                 "InheritedType": 2
               }
             ],
-            "saved_objtypeKey": "LABEL"
+            "saved_objtypeKey": "LABEL",
+            "tree_closed": true
           },
           {
             "guid": "GUID80219531-227224S860496",
@@ -1614,8 +1614,8 @@
                 "flags": 17,
                 "strtype": "OBJECT/Position",
                 "intarray": [
-                  -28,
-                  81
+                  -51,
+                  156
                 ],
                 "InheritedType": 7
               },
@@ -1734,8 +1734,8 @@
           }
         ],
         "isPage": true,
-        "editor_posx": 300,
-        "editor_posy": -300,
+        "editor_posx": 580,
+        "editor_posy": -580,
         "dont_export": false,
         "locked": false,
         "properties": [
@@ -2237,8 +2237,8 @@
           }
         ],
         "isPage": true,
-        "editor_posx": 570,
-        "editor_posy": -300,
+        "editor_posx": 1102,
+        "editor_posy": -580,
         "dont_export": false,
         "locked": true,
         "properties": [
@@ -2458,8 +2458,8 @@
   "info": {
     "name": "CarTouchScreenMiniDisplay.spj",
     "depth": 2,
-    "width": 240,
-    "height": 240,
+    "width": 466,
+    "height": 466,
     "rotation": 0,
     "offset_x": 0,
     "offset_y": 0,
@@ -2479,16 +2479,16 @@
     "theme_dark": true,
     "theme_color1": 5,
     "theme_color2": 0,
-    "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\SquarelineProject\\ui",
+    "uiExportFolderPath": "D:\\Sandbox\\CarTouchscreenMiniDisplay\\CarTouchscreenMiniDisplay\\CarTouchscreenMiniDisplay\\ui",
     "projectExportFolderPath": "",
     "custom_variable_prefix": "uic",
-    "backup_cnt": 32,
+    "backup_cnt": 36,
     "autosave_cnt": 0,
     "group_color_cnt": 0,
     "lvgl_version": "8.3.6",
     "callfuncsexport": "C_FILE",
     "imageexport": "SOURCE",
-    "lvgl_include_path": "lvgl.h",
+    "lvgl_include_path": "../libraries/lvgl/lvgl.h",
     "drive_stdio": "-",
     "drive_stdio_path": "",
     "drive_posix": "-",
@@ -2499,7 +2499,7 @@
     "drive_fatfs_path": "",
     "naming": "Name",
     "naming_force_lowercase": false,
-    "nidcnt": 1000748,
+    "nidcnt": 1001160,
     "BitDepth": 16,
     "Name": "CarTouchScreenMiniDisplay"
   }

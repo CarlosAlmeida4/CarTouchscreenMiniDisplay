@@ -1,0 +1,14 @@
+SET(SOURCES screens/ui_Inclinometer.c
+    screens/ui_Temperature.c
+    ui.c
+    components/ui_comp_hook.c
+    ui_helpers.c
+    images/ui_img_scale_revamp_png.c
+    fonts/ui_font_Nabla_Big.c
+    fonts/ui_font_HeadingDegree.c
+    fonts/ui_font_SmallerEmblemaOne.c)
+
+
+include_directories(../libraries/lvgl)
+
+add_library(ui ${SOURCES})
