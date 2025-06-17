@@ -78,8 +78,8 @@ static bool repeating_bsp_timer_cb(struct repeating_timer *t)
     AccelInterface::RollPitch RP = AccInter->getPitchAndRoll();
     _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.roll));
     _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.pitch));
-    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-RP.roll)));
-    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP.roll)));
+    //lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-RP.roll)));
+    //lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP.roll)));
     lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP.pitch), LV_ANIM_ON);
 
     return true;
