@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-#include "lvgl.h"
+#include "../libraries/lvgl/lvgl.h"
 
 #include "ui_helpers.h"
 #include "ui_events.h"
@@ -48,7 +48,7 @@ extern lv_obj_t * ui_Label2;
 extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
-LV_IMG_DECLARE(ui_img_scale_png);    // assets/Scale.png
+LV_IMG_DECLARE(ui_img_scale_revamp_png);    // assets/Scale_revamp.png
 
 // FONTS
 LV_FONT_DECLARE(ui_font_Nabla_Big);
