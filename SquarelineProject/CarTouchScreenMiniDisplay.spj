@@ -340,7 +340,7 @@
                       {
                         "nid": 10320,
                         "strtype": "_style/Arc_Width",
-                        "integer": 110,
+                        "integer": 50,
                         "InheritedType": 6
                       },
                       {
@@ -603,7 +603,7 @@
                       {
                         "nid": 10320,
                         "strtype": "_style/Arc_Width",
-                        "integer": 110,
+                        "integer": 50,
                         "InheritedType": 6
                       },
                       {
@@ -776,7 +776,7 @@
               {
                 "nid": 1020,
                 "strtype": "IMAGE/Asset",
-                "strval": "assets/Scale.png",
+                "strval": "assets/Scale_revamp.png",
                 "InheritedType": 5
               },
               {

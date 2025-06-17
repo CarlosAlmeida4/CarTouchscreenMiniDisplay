@@ -31,7 +31,7 @@
 #define DISP_HOR_RES 466
 #define DISP_VER_RES 466
 
-float pitch = 0;
+
 
 inline float normalize(float input)
 {
@@ -54,26 +54,6 @@ char *turnFloat2Char(float input)
     return retVal;
 }
 
-/********************************************************************************
-function:	Calculate Roll and pitch
-parameter:
-********************************************************************************/
-void CalculateRP(float acc[3], float *RP)
-{
-    float Xbuff = acc[0];
-    float Ybuff = acc[1];
-    float Zbuff = acc[2];
-    
-    RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
-    RP[1] = atan2(Zbuff,-Xbuff ) * 57.3;
-
-    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[0]));
-    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP[1]));
-    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(RP[0])));
-    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP[0])));
-    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP[1]), LV_ANIM_ON);
-}
-
 void set_cpu_clock(uint32_t freq_Mhz)
 {
     set_sys_clock_khz(freq_Mhz * 1000, true);
@@ -89,33 +69,18 @@ void set_cpu_clock(uint32_t freq_Mhz)
 static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 {
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
-    //for(int i = 0; i<1000;i++);
-    printf("%f \n", pitch);
-    
     return true;
 }
 
 static bool repeating_bsp_timer_cb(struct repeating_timer *t)
 {
-    //qmi8658_data_t data;
-    //bsp_qmi8658_read_data(&data);
-    //float RP[2];
-    //float Xbuff = data.acc_x;
-    //float Ybuff = data.acc_y;
-    //float Zbuff = data.acc_z;
-    ////printf("acc: %5d %5d %5d , gyr:%5d %5d %5d\r\n", data.acc_x, data.acc_y, data.acc_z, data.gyr_x, data.gyr_y, data.gyr_z);
-    ////printf("acc: %f %f %f \r\n", data.AngleX, data.AngleY, data.AngleZ);
-    //RP[0] = atan2(Ybuff , -Xbuff) * 57.3;
-    //RP[1] = atan2(Zbuff,-Ybuff ) * 57.3;
-    //pitch = RP[1];
-    ////printf("Pitch: %f Roll %f \n",RP[0],RP[1]);
-    ////RP[0] = 50;
-    ////RP[1] = 50;
-    //_ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleX));
-    //_ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(data.AngleZ));
-    //lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-data.AngleX)));
-    //lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(data.AngleX)));
-    //lv_slider_set_value(uic_Pitch,(int32_t)normalize(pitch), LV_ANIM_ON);
+    AccelInterface *AccInter = AccelInterface::getInstance();
+    AccelInterface::RollPitch RP = AccInter->getPitchAndRoll();
+    _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.roll));
+    _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.pitch));
+    lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-RP.roll)));
+    lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP.roll)));
+    lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP.pitch), LV_ANIM_ON);
 
     return true;
 }
@@ -128,9 +93,11 @@ int main()
     bsp_battery_init();
     adc_set_temp_sensor_enabled(true);
     bsp_i2c_init();
-    //bsp_qmi8658_init();
+    
     bsp_pcf85063_init();
     bsp_pcf85063_get_time(&now_tm);
+    AccelInterface *AccInter = AccelInterface::getInstance();
+    AccInter->initialize();
     if (now_tm.tm_year < 125 || now_tm.tm_year > 130)
     {
         now_tm.tm_year = 2025 - 1900; // The year starts from 1900
