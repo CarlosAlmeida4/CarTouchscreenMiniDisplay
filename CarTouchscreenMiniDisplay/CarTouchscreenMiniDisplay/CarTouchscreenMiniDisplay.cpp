@@ -20,6 +20,7 @@
 #include "hardware/clocks.h"
 #include "hardware/structs/pll.h"
 #include "hardware/structs/clocks.h"
+#include "hardware/watchdog.h"
 
 #include "ui.h"
 #include "AccelInterface.h"
@@ -69,6 +70,9 @@ void set_cpu_clock(uint32_t freq_Mhz)
 static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 {
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
+    //static uint8_t counter = 0;
+    //counter++;
+    //printf("Timer Counter: %d\n", counter);//Important or LCD will crash
     return true;
 }
 
@@ -78,9 +82,14 @@ static bool repeating_bsp_timer_cb(struct repeating_timer *t)
     AccelInterface::RollPitch RP = AccInter->getPitchAndRoll();
     _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.roll));
     _ui_label_set_property(uic_PitchText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.pitch));
-    //lv_arc_set_value(uic_RollA,(int16_t)(100-normalize(-RP.roll)));
-    //lv_arc_set_value(uic_RollB,(int16_t)(100-normalize(RP.roll)));
+    lv_slider_set_value(uic_RollA,(int32_t)(100-normalize(-RP.roll)), LV_ANIM_ON);
+    lv_slider_set_value(uic_RollB,(int32_t)(100-normalize(RP.roll)), LV_ANIM_ON);
     lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP.pitch), LV_ANIM_ON);
+    //printf("Roll: %f \n", RP.roll);
+    //printf("Pitch: %f \n", RP.pitch);
+    //static uint8_t counter = 0;
+    //counter++;
+    //printf("Accel Counter: %d\n", counter);//Important or LCD will crash
 
     return true;
 }
@@ -119,9 +128,23 @@ int main()
     add_repeating_timer_ms(BSP_TICK_PERIOD_MS, repeating_bsp_timer_cb, NULL, &bsp_timer); 
     // lv_demo_widgets();
     ui_init();
+    if (watchdog_enable_caused_reboot()) {
+        printf("Rebooted by Watchdog!\n");
+        //return 0;
+    } else {
+        printf("Clean boot\n");
+    }
+    // Enable the watchdog, requiring the watchdog to be updated every 100ms or the chip will reboot
+    // second arg is pause on debug which means the watchdog will pause when stepping through code
+    watchdog_enable(8000, 1);
+
     while (true)
     {
         lv_timer_handler();
         sleep_ms(LVGL_TICK_PERIOD_MS);
+            static uint8_t counter = 0;
+            counter++;
+            printf("Main Counter: %d\n", counter);//Important or LCD will crash
+        watchdog_update();
     }
 }
