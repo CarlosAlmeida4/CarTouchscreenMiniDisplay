@@ -69,7 +69,9 @@ void set_cpu_clock(uint32_t freq_Mhz)
 
 static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 {
+    
     lv_tick_inc(LVGL_TICK_PERIOD_MS);
+    
     //static uint8_t counter = 0;
     //counter++;
     //printf("Timer Counter: %d\n", counter);//Important or LCD will crash
@@ -141,10 +143,9 @@ int main()
     while (true)
     {
         lv_timer_handler();
-        sleep_ms(LVGL_TICK_PERIOD_MS);
-            static uint8_t counter = 0;
-            counter++;
-            printf("Main Counter: %d\n", counter);//Important or LCD will crash
+        //    static uint8_t counter = 0;
+        //    counter++;
+        //    printf("Main Counter: %d\n", counter);//Important or LCD will crash
         watchdog_update();
     }
 }

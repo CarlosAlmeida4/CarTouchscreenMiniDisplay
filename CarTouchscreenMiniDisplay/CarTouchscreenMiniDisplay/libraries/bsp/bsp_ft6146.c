@@ -123,7 +123,7 @@ static void gpio_irq_callbac(uint gpio, uint32_t event_mask)
     if (event_mask == GPIO_IRQ_EDGE_FALL)
     {
         g_ft6146_irq_flag = true;
-        // printf("gpio_irq_callbac\r\n");
+        printf("gpio_irq_callbac\r\n");
     }
 }
 
