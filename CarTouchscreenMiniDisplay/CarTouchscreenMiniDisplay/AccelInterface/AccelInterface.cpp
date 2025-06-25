@@ -15,7 +15,7 @@ AccelInterface::RollPitch AccelInterface::getPitchAndRoll() {
         qmi8658_data_t data;
         bsp_qmi8658_read_data(&data);
         RP.roll = data.AngleX; // Roll
-        printf("y: %f , z: %f\n", data.acc_y, data.acc_z);
+        //printf("y: %f , z: %f\n", data.acc_y, data.acc_z);
         RP.pitch = CalculateRoll(data.acc_y,data.acc_z);  // Pitch
         return RP;
 }
