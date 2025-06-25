@@ -80,6 +80,7 @@ static bool repeating_lvgl_timer_cb(struct repeating_timer *t)
 
 static bool repeating_bsp_timer_cb(struct repeating_timer *t)
 {
+    static uint8_t counter = 0;
     AccelInterface *AccInter = AccelInterface::getInstance();
     AccelInterface::RollPitch RP = AccInter->getPitchAndRoll();
     _ui_label_set_property(uic_RollText,_UI_LABEL_PROPERTY_TEXT,turnFloat2Char(RP.roll));
@@ -89,9 +90,9 @@ static bool repeating_bsp_timer_cb(struct repeating_timer *t)
     lv_slider_set_value(uic_Pitch,(int32_t)normalize(RP.pitch), LV_ANIM_ON);
     //printf("Roll: %f \n", RP.roll);
     //printf("Pitch: %f \n", RP.pitch);
-    //static uint8_t counter = 0;
-    //counter++;
-    //printf("Accel Counter: %d\n", counter);//Important or LCD will crash
+    
+    counter++;
+    printf("Accel Counter: %d\n", counter);//Important or LCD will crash
 
     return true;
 }
@@ -138,7 +139,7 @@ int main()
     }
     // Enable the watchdog, requiring the watchdog to be updated every 100ms or the chip will reboot
     // second arg is pause on debug which means the watchdog will pause when stepping through code
-    watchdog_enable(8000, 1);
+    //watchdog_enable(8000, 1);
 
     while (true)
     {
@@ -146,6 +147,6 @@ int main()
         //    static uint8_t counter = 0;
         //    counter++;
         //    printf("Main Counter: %d\n", counter);//Important or LCD will crash
-        watchdog_update();
+        //watchdog_update();
     }
 }
