@@ -91,8 +91,8 @@ static bool repeating_bsp_timer_cb(struct repeating_timer *t)
     //printf("Roll: %f \n", RP.roll);
     //printf("Pitch: %f \n", RP.pitch);
     
-    counter++;
-    printf("Accel Counter: %d\n", counter);//Important or LCD will crash
+    //counter++;
+    //printf("Accel Counter: %d\n", counter);//Important or LCD will crash
 
     return true;
 }
@@ -133,13 +133,18 @@ int main()
     ui_init();
     if (watchdog_enable_caused_reboot()) {
         printf("Rebooted by Watchdog!\n");
+        uint32_t pc = watchdog_hw->scratch[7];
+        printf("Last program counter was: %08x \n",watchdog_hw->scratch[7]);
+        printf("Last program counter was: %08x \n",watchdog_hw->scratch[4]);
+        printf("Last program counter was: %08x \n",watchdog_hw->scratch[5]);
         //return 0;
     } else {
         printf("Clean boot\n");
     }
     // Enable the watchdog, requiring the watchdog to be updated every 100ms or the chip will reboot
     // second arg is pause on debug which means the watchdog will pause when stepping through code
-    //watchdog_enable(8000, 1);
+    watchdog_enable(1000, 1);
+
 
     while (true)
     {
@@ -147,6 +152,7 @@ int main()
         //    static uint8_t counter = 0;
         //    counter++;
         //    printf("Main Counter: %d\n", counter);//Important or LCD will crash
-        //watchdog_update();
+        watchdog_update();
+        //printf("Last program counter was: %08x \n",watchdog_hw->scratch[5]);
     }
 }
